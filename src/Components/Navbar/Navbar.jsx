@@ -39,10 +39,10 @@ const Navbar = () => {
       <div className={`md:flex md:items-center md:w-auto w-full ${isMenuOpen ? 'block' : 'hidden'}`} id="menu">
         <nav>
           <ul className="md:flex items-center justify-between text-2xl text-slate-100 pt-4 md:pt-0">
-            <li><NavLink to="/about" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">About Us</NavLink></li>
-            <li><NavLink to="/treatments" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Treatments</NavLink></li>
-            <li><NavLink to="/blog" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Blog</NavLink></li>
-            <li><NavLink to="/contact" className="md:p-4 py-3 px-0 block md:mb-0 mb-2 hover:text-blue-400 transition-all duration-300">Contact Us</NavLink></li>
+            <li><NavLink to="/about" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Home</NavLink></li>
+            <li><NavLink to="/treatments" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Abouts</NavLink></li>
+            <li><NavLink to="/blog" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Skills</NavLink></li>
+            <li><NavLink to="/contact" className="md:p-4 py-3 px-0 block md:mb-0 mb-2 hover:text-blue-400 transition-all duration-300">All Projects</NavLink></li>
           </ul>
         </nav>
       </div>

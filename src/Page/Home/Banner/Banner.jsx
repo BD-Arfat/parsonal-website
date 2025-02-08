@@ -16,7 +16,7 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const phoneNumber = "+880 1846615162"; // আপনার নম্বর এখানে বসান
+  const phoneNumber = "+880 1846615162";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(phoneNumber);
@@ -25,8 +25,45 @@ const Banner = () => {
 
   return (
     <div className="relative w-full py-32 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 bg-gradient-to-r  overflow-hidden">
+      {/* Background Decorative Circles */}
+      <motion.div
+        animate={{ x: [-10, 10, -10], y: [-10, 20, -10] }}
+        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute top-10 left-10 w-36 h-36 bg-green-600 rounded-full opacity-30 blur-xl"
+      ></motion.div>
+
+      <motion.div
+        animate={{ x: [10, -10, 10], y: [10, -20, 10] }}
+        transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute bottom-10 right-10 w-32 h-32 bg-green-700 rounded-full opacity-40 blur-2xl"
+      ></motion.div>
+
+      <motion.div
+        animate={{ x: [-15, 15, -15], y: [15, -25, 15] }}
+        transition={{ duration: 7, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute top-1/3 left-1/4 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-lg"
+      ></motion.div>
+
+      <motion.div
+        animate={{ x: [10, -10, 10], y: [-10, 20, -10] }}
+        transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute bottom-1/4 right-1/3 w-44 h-44 bg-green-400 rounded-full opacity-25 blur-lg"
+      ></motion.div>
+
+      <motion.div
+        animate={{ x: [-8, 8, -8], y: [8, -8, 8] }}
+        transition={{ duration: 9, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute top-1/2 left-10 w-24 h-24 bg-green-500 rounded-full opacity-20 blur-md"
+      ></motion.div>
+
+      <motion.div
+        animate={{ x: [12, -12, 12], y: [-12, 12, -12] }}
+        transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute bottom-5 right-1/2 w-28 h-28 bg-green-300 rounded-full opacity-30 blur-md"
+      ></motion.div>
+
       {/* Left Side - Text Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
@@ -34,7 +71,7 @@ const Banner = () => {
       >
         <span className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">🚀 Modern Web Developer</span>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-          <motion.span 
+          <motion.span
             key={titleIndex}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,24 +98,21 @@ const Banner = () => {
           Call Me Today
         </motion.button>
       </motion.div>
-      
+
       {/* Right Side - Image Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         className="relative md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0"
       >
         <motion.img
-          src={image} 
+          src={image}
           alt="Ariful Islam Arfat"
           className="w-[400px] xl:w-[500px] rounded-xl shadow-xl border-4 border-green-500 relative z-10"
           whileHover={{ scale: 1.05 }}
         />
       </motion.div>
-      
-      {/* Background Illustration Shape */}
-      <div className="absolute top-0 right-0 w-1/2 h-full  rounded-bl-full opacity-10"></div>
 
       {/* Modal */}
       {isModalOpen && (
@@ -87,21 +121,21 @@ const Banner = () => {
             <h2 className="text-2xl font-semibold mb-2">📞 Contact Me</h2>
             <p className="text-lg font-semibold text-green-600">{phoneNumber}</p>
             <div className="flex gap-2 mt-4 justify-center">
-              <button 
-                onClick={copyToClipboard} 
+              <button
+                onClick={copyToClipboard}
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600"
               >
                 Copy Number
               </button>
-              <a 
-                href={`tel:${phoneNumber}`} 
+              <a
+                href={`tel:${phoneNumber}`}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600"
               >
                 Call Now
               </a>
             </div>
-            <button 
-              onClick={() => setIsModalOpen(false)} 
+            <button
+              onClick={() => setIsModalOpen(false)}
               className="mt-4 text-red-500 font-semibold"
             >
               Close
