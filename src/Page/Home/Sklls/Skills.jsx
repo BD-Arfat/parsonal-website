@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
+import { Link } from "react-router-dom";
 
 const skills = [
     { name: "HTML", percentage: 90 },
@@ -42,18 +43,18 @@ const Skills = () => {
                     {skills.map((skill, index) => (
                         <motion.div
                             key={index}
-                            className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+                            className="bg-gradient-to-r from-green-200 via-green-100 to-white shadow-lg rounded-xl p-6 border border-gray-300 hover:shadow-xl transition-transform transform hover:-translate-y-2"
                             initial={{ opacity: 0, y: 20 }}
                             animate={isVisible ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <div className="flex justify-between font-semibold mb-2">
-                                <span>{skill.name}</span>
-                                <span>{skill.percentage}%</span>
+                            <div className="flex justify-between font-bold text-lg mb-4">
+                                <span className="text-green-700">{skill.name}</span>
+                                <span className="text-gray-700">{skill.percentage}%</span>
                             </div>
-                            <div className="w-full bg-gray-300 h-3 rounded-full">
+                            <div className="w-full bg-gray-300 h-3 rounded-full overflow-hidden">
                                 <motion.div
-                                    className="bg-green-400 h-3 rounded-full font-roboto"
+                                    className="bg-green-500 h-3 rounded-full"
                                     initial={{ width: 0 }}
                                     animate={{ width: isVisible ? `${skill.percentage}%` : "0%" }}
                                     transition={{ duration: 1, ease: "easeInOut" }}
@@ -62,13 +63,13 @@ const Skills = () => {
                         </motion.div>
                     ))}
                 </div>
-                <div className="text-center mt-10">
-                    <a
-                        href="mailto:arifulislam5162@gmail.com"
-                        className="inline-block px-6 py-3 bg-green-600 font-roboto text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition"
+                <div className="text-center mt-12">
+                    <Link
+                        to={'/skills'}
+                        className="inline-block px-8 py-3 bg-green-600 text-white font-bold text-lg rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-110"
                     >
                         See More Skills
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
