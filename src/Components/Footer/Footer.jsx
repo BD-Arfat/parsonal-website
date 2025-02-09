@@ -13,33 +13,33 @@ const Footer = () => {
             href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl hover:text-green-400 transition-all duration-300"
+            className="text-lg w-10 hover:text-green-400 transition-all duration-300"
           >
-            <FaYoutube />
+            <img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" alt="" />
           </a>
           <a
-            href="https://www.linkedin.com"
+            href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl hover:text-green-400 transition-all duration-300"
+            className="text-lg w-10 hover:text-green-400 transition-all duration-300"
           >
-            <FaLinkedin />
+            <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" alt="" />
           </a>
           <a
-            href="https://github.com"
+            href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl hover:text-green-400 transition-all duration-300"
+            className="text-lg w-10 hover:text-green-400 transition-all duration-300"
           >
-            <FaGithub />
+            <img src="https://cdn-icons-png.flaticon.com/128/145/145802.png" alt="" />
           </a>
           <a
-            href="https://www.facebook.com"
+            href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl hover:text-green-400 transition-all duration-300"
+            className="text-lg w-10 hover:text-green-400 transition-all duration-300"
           >
-            <FaFacebook />
+            <img src="https://cdn-icons-png.flaticon.com/128/733/733609.png" alt="" />
           </a>
         </div>
         <p className="mt-6 text-sm text-gray-300">© 2025 Ariful Islam. All Rights Reserved.</p>
