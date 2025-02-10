@@ -51,29 +51,25 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 bg-gradient-to-r from-green-100 via-white to-green-100">
-    <div className="max-w-6xl mx-auto px-5">
-      <h2 className="text-4xl font-semibold text-center text-green-700 mb-8">Our Services</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            className="group relative bg-white shadow-lg rounded-lg p-6 transition-all duration-300 transform hover:scale-105 hover:bg-green-500 hover:text-white hover:translate-x-4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-          >
-            <div className="flex justify-center mb-4 text-4xl group-hover:text-white transition-colors duration-300">
-              {service.icon}
-            </div>
-            <h3 className="text-2xl font-bold text-green-600 mb-4 text-center group-hover:text-white transition-colors duration-300">{service.title}</h3>
-            <p className="text-gray-700 text-center group-hover:text-white transition-colors duration-300">{service.description}</p>
-          </motion.div>
-        ))}
+    <section className="mt-10 px-6">
+      <h1 className="text-4xl font-bold font-roboto text-center text-green-500">Service</h1>
+      <div className="container mx-auto text-center py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="p-10 rounded-xl shadow-xl bg-white border-2 border-green-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-3 relative overflow-hidden flex flex-col items-center text-center"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="text-6xl mb-4 animate-bounce">{service.icon}</div>
+              <h3 className="text-2xl font-bold mb-3 font-roboto leading-tight">{service.title}</h3>
+              <p className="text-md leading-relaxed font-lora text-lg px-2">{service.description}</p>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-green-400 transition-all duration-300 hover:h-3"></div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-  
+    </section>
   );
 };
 
