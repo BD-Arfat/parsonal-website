@@ -1,23 +1,21 @@
 import React from "react";
+import { FaGithub, FaLink } from 'react-icons/fa';  // Importing GitHub icon from React Icons
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
-import { motion } from "framer-motion";
 
 const projects = [
   {
-    project_name: "Portfolio Website",
-    project_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe541a8yoJqPh5pOdE23HJLTspIsOB6Da4Mg&s",
+    project_name: "liftguard solution",
+    project_image: "https://i.ibb.co.com/S4PzF3nR/liftguard.png",
     project_description:
-      "A personal portfolio website showcasing my projects, skills, and experience.",
-    project_tags: ["Portfolio", "Web Design", "Frontend"],
+      "This website is basically for a company. I have created this project for a client whose name is (liftguard solution).",
+    project_tags: ["ReactJs", "React Router Dom", "TailwindCss", "Frontend", "framer motion"],
     project_features: [
       "Responsive design",
-      "Dark/Light mode",
       "Smooth scrolling",
       "Animated components",
-      "Contact form with email integration",
     ],
-    live_site_link: "#",
-    github_client_site_link: "#",
+    live_site_link: "https://liftguardsolution01.netlify.app",
+    github_client_site_link: "https://github.com/BD-Arfat/lift-guard",
     github_server_site_link: "N/A",
     project_category: "React",
   },
@@ -47,9 +45,20 @@ const ProjectCard = ({ project }) => {
       <img
         src={project.project_image}
         alt={project.project_name}
-        className="rounded-xl mb-4 w-full h-40 object-cover"
+        className="rounded-xl mb-4 w-full h-56 object-cover"
       />
-      <h3 className="text-xl font-semibold mb-2">{project.project_name}</h3>
+      <div className="flex items-center mb-2">
+        <h3 className="text-xl font-semibold">{project.project_name}</h3>
+        {/* GitHub icon next to the project name */}
+        <a
+          href={project.github_client_site_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 text-gray-600 hover:text-black"
+        >
+          <FaGithub size={20} />
+        </a>
+      </div>
       <p className="text-gray-600 mb-3">{project.project_description}</p>
       <div className="flex flex-wrap gap-2 mb-3">
         {project.project_tags.map((tag, index) => (
@@ -67,23 +76,23 @@ const ProjectCard = ({ project }) => {
         ))}
       </ul>
       <a
-        href={project.live_site_link}
+        href={project.live_site_link} target="_blank"
         className="bg-green-600 text-white px-4 py-2 rounded-lg inline-block mt-2 hover:bg-blue-700"
-      >
+      > 
         Live Site
       </a>
       <div className="flex justify-between mt-3">
         <a
-          href={project.github_client_site_link}
-          className="text-green-700 hover:underline"
-        >
+          href={project.github_client_site_link} target="_blank"
+          className="text-green-700 hover:underline flex items-center gap-1"
+        ><FaGithub/>
           Client Code
         </a>
         {project.github_server_site_link !== "N/A" && (
           <a
-            href={project.github_server_site_link}
-            className="text-green-700 hover:underline"
-          >
+            href={project.github_server_site_link} target="_blank"
+            className="text-green-700 hover:underline flex items-center gap-1"
+          ><FaGithub/>
             Server Code
           </a>
         )}
@@ -95,7 +104,9 @@ const ProjectCard = ({ project }) => {
 const ProjectList = () => {
   return (
     <div className="container mx-auto px-5 py-10">
-      <h2 className="text-3xl font-bold text-center mb-8">My Projects</h2>
+      <div className="mt-36 mb-10">
+      <HeaderSection name={'PROJECTS'}></HeaderSection>
+      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
