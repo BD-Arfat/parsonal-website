@@ -2,68 +2,107 @@ import React from "react";
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
 import { motion } from "framer-motion";
 
-const projectsData = [
+const projects = [
   {
-    title: "E-Commerce Website",
-    description: "A fully responsive online shopping platform with payment integration.",
-    image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400",
-    liveLink: "#",
+    project_name: "Portfolio Website",
+    project_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe541a8yoJqPh5pOdE23HJLTspIsOB6Da4Mg&s",
+    project_description:
+      "A personal portfolio website showcasing my projects, skills, and experience.",
+    project_tags: ["Portfolio", "Web Design", "Frontend"],
+    project_features: [
+      "Responsive design",
+      "Dark/Light mode",
+      "Smooth scrolling",
+      "Animated components",
+      "Contact form with email integration",
+    ],
+    live_site_link: "#",
+    github_client_site_link: "#",
+    github_server_site_link: "N/A",
+    project_category: "React",
   },
   {
-    title: "Portfolio Website",
-    description: "A modern personal portfolio website with animations and dark mode.",
-    image: "https://source.unsplash.com/400x250/?portfolio,website",
-    liveLink: "#",
-  },
-  {
-    title: "Quiz App",
-    description: "An interactive quiz application with multiple categories and real-time scoring.",
-    image: "https://source.unsplash.com/400x250/?quiz,app",
-    liveLink: "#",
+    project_name: "E-commerce Website",
+    project_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_DPeNYdcs-fI1fkjOG0oaVergA6tmnj5t1g&s",
+    project_description:
+      "A full-stack e-commerce platform with user authentication and payment integration.",
+    project_tags: ["E-commerce", "Full Stack", "MERN"],
+    project_features: [
+      "User authentication with JWT",
+      "Product management dashboard",
+      "Payment integration with Stripe",
+      "Add to cart and wishlist feature",
+      "Order tracking system",
+    ],
+    live_site_link: "#",
+    github_client_site_link: "#",
+    github_server_site_link: "#",
+    project_category: "Fullstack",
   },
 ];
 
-const Projects = () => {
+const ProjectCard = ({ project }) => {
   return (
-    <section className="mt-48 mb-32">
-      <div className="text-center mb-16">
-        <HeaderSection name={"PROJECTS"} />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
-        {projectsData.map((project, index) => (
-          <motion.div
+    <div className="bg-white shadow-lg rounded-2xl p-5 transition transform hover:scale-105">
+      <img
+        src={project.project_image}
+        alt={project.project_name}
+        className="rounded-xl mb-4 w-full h-40 object-cover"
+      />
+      <h3 className="text-xl font-semibold mb-2">{project.project_name}</h3>
+      <p className="text-gray-600 mb-3">{project.project_description}</p>
+      <div className="flex flex-wrap gap-2 mb-3">
+        {project.project_tags.map((tag, index) => (
+          <span
             key={index}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.3 }}
-            whileHover={{ scale: 1.05, boxShadow: "0px 15px 40px rgba(0, 128, 0, 0.3)" }}
-            className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105"
+            className="bg-blue-100 text-green-600 px-2 py-1 rounded-lg text-sm"
           >
-            {/* Image */}
-            <img
-              className="w-full h-56 object-cover"
-              src={project.image}
-              alt={project.title}
-            />
-
-            {/* Content */}
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-gray-900 font-roboto mb-2">{project.title}</h3>
-              <p className="text-gray-600 mb-4 font-lora">{project.description}</p>
-
-              {/* Button */}
-              <a
-                href={project.liveLink}
-                className="inline-block w-full bg-green-400 text-white font-semibold py-2 rounded-lg transition duration-300 hover:bg-green-600 font-roboto text-center"
-              >
-                See Details
-              </a>
-            </div>
-          </motion.div>
+            {tag}
+          </span>
         ))}
       </div>
-    </section>
+      <ul className="list-disc list-inside mb-3 text-gray-700">
+        {project.project_features.map((feature, index) => (
+          <li key={index} className="text-sm">{feature}</li>
+        ))}
+      </ul>
+      <a
+        href={project.live_site_link}
+        className="bg-green-600 text-white px-4 py-2 rounded-lg inline-block mt-2 hover:bg-blue-700"
+      >
+        Live Site
+      </a>
+      <div className="flex justify-between mt-3">
+        <a
+          href={project.github_client_site_link}
+          className="text-green-700 hover:underline"
+        >
+          Client Code
+        </a>
+        {project.github_server_site_link !== "N/A" && (
+          <a
+            href={project.github_server_site_link}
+            className="text-green-700 hover:underline"
+          >
+            Server Code
+          </a>
+        )}
+      </div>
+    </div>
   );
 };
 
-export default Projects;
+const ProjectList = () => {
+  return (
+    <div className="container mx-auto px-5 py-10">
+      <h2 className="text-3xl font-bold text-center mb-8">My Projects</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProjectList;

@@ -24,7 +24,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative w-full py-32 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 bg-gradient-to-r  overflow-hidden">
+    <div className="relative w-full py-32 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 bg-gradient-to-r overflow-hidden">
       {/* Background Decorative Circles */}
       <motion.div
         animate={{ x: [-10, 10, -10], y: [-10, 20, -10] }}
@@ -97,6 +97,15 @@ const Banner = () => {
         >
           Call Me Today
         </motion.button>
+        <motion.a
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          href="/cv.pdf"  // Make sure to replace with actual link
+          download
+          className="bg-green-500 ms-3 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-green-600 transition-all"
+        >
+          Download CV
+        </motion.a>
       </motion.div>
 
       {/* Right Side - Image Section */}
@@ -116,32 +125,56 @@ const Banner = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-            <h2 className="text-2xl font-semibold mb-2">📞 Contact Me</h2>
-            <p className="text-lg font-semibold text-green-600">{phoneNumber}</p>
-            <div className="flex gap-2 mt-4 justify-center">
-              <button
-                onClick={copyToClipboard}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600"
-              >
-                Copy Number
-              </button>
-              <a
-                href={`tel:${phoneNumber}`}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600"
-              >
-                Call Now
-              </a>
-            </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="bg-white p-6 rounded-2xl shadow-xl w-96 text-center relative"
+          >
+            {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="mt-4 text-red-500 font-semibold"
+              className="absolute top-3 right-3 text-gray-600 hover:text-red-500 transition"
             >
-              Close
+              ✖
             </button>
-          </div>
-        </div>
+
+            {/* Modal Title */}
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">📞 Contact Me</h2>
+
+            {/* Phone Number */}
+            <p className="text-xl font-semibold text-green-600 bg-gray-100 p-3 rounded-lg">
+              {phoneNumber}
+            </p>
+
+            {/* Buttons */}
+            <div className="flex gap-3 mt-5 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={copyToClipboard}
+                className="bg-blue-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all"
+              >
+                📋 Copy Number
+              </motion.button>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href={`tel:${phoneNumber}`}
+                className="bg-green-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-green-600 transition-all"
+              >
+                📞 Call Now
+              </motion.a>
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </div>
   );
