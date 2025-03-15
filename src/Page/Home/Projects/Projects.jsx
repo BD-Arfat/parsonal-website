@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaGithub, FaLink } from 'react-icons/fa';  // Importing GitHub icon from React Icons
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
+import { Dialog } from "@headlessui/react";
 
 const projects = [
   {
@@ -20,11 +21,36 @@ const projects = [
     project_category: "React",
   },
   {
-    project_name: "E-commerce Website",
-    project_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_DPeNYdcs-fI1fkjOG0oaVergA6tmnj5t1g&s",
+    project_name: "MedlinePlus",
+    project_image: "https://i.ibb.co.com/rfF2y15j/projects.png",
     project_description:
-      "A full-stack e-commerce platform with user authentication and payment integration.",
-    project_tags: ["E-commerce", "Full Stack", "MERN"],
+      "a medicine e-commerce platform that enables users to buy and sell medicines seamlessly. This platform ensures a secure and efficient buying experience, featuring online payment integration for hassle-free transactions.",
+    project_tags: [
+      "React.js",
+      "Tailwind CSS",
+      "Swiper",
+      "Headless UI",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "TanStack React Query",
+      "React Router DOM",
+      "TanStack React Router",
+      "Stripe",
+      "Firebase",
+      "React Hook Form",
+      "React Modal",
+      "React Icons",
+      "React Helmet Async",
+      "Axios",
+      "SweetAlert2",
+      "ESLint",
+      "ESLint React Hooks Plugin",
+      "ESLint React Refresh Plugin",
+      "Vite",
+      "PostCSS",
+      "Autoprefixer"
+    ],
     project_features: [
       "User authentication with JWT",
       "Product management dashboard",
@@ -32,72 +58,108 @@ const projects = [
       "Add to cart and wishlist feature",
       "Order tracking system",
     ],
-    live_site_link: "#",
-    github_client_site_link: "#",
-    github_server_site_link: "#",
+    live_site_link: "https://lnkd.in/gqCvKUd6",
+    github_client_site_link: "https://lnkd.in/gpywiXVs",
+    github_server_site_link: " https://lnkd.in/gc6QH5yu",
     project_category: "Fullstack",
   },
 ];
 
 const ProjectCard = ({ project }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-5 transition transform hover:scale-105">
-      <img
-        src={project.project_image}
-        alt={project.project_name}
-        className="rounded-xl mb-4 w-full h-56 object-cover"
-      />
-      <div className="flex items-center mb-2">
-        <h3 className="text-xl font-semibold">{project.project_name}</h3>
-        {/* GitHub icon next to the project name */}
-        <a
-          href={project.github_client_site_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 text-gray-600 hover:text-black"
-        >
-          <FaGithub size={20} />
-        </a>
-      </div>
-      <p className="text-gray-600 mb-3">{project.project_description}</p>
-      <div className="flex flex-wrap gap-2 mb-3">
-        {project.project_tags.map((tag, index) => (
-          <span
-            key={index}
-            className="bg-blue-100 text-green-600 px-2 py-1 rounded-lg text-sm"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <ul className="list-disc list-inside mb-3 text-gray-700">
-        {project.project_features.map((feature, index) => (
-          <li key={index} className="text-sm">{feature}</li>
-        ))}
-      </ul>
-      <a
-        href={project.live_site_link} target="_blank"
-        className="bg-green-600 text-white px-4 py-2 rounded-lg inline-block mt-2 hover:bg-blue-700"
-      > 
-        Live Site
-      </a>
-      <div className="flex justify-between mt-3">
-        <a
-          href={project.github_client_site_link} target="_blank"
-          className="text-green-700 hover:underline flex items-center gap-1"
-        ><FaGithub/>
-          Client Code
-        </a>
-        {project.github_server_site_link !== "N/A" && (
+    <>
+      {/* Project Card */}
+      <div className="bg-white shadow-lg rounded-2xl p-5 transition-transform hover:scale-105">
+        <img
+          src={project.project_image}
+          alt={project.project_name}
+          className="rounded-xl mb-4 w-full h-56 object-cover"
+        />
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-xl font-semibold">{project.project_name}</h3>
           <a
-            href={project.github_server_site_link} target="_blank"
-            className="text-green-700 hover:underline flex items-center gap-1"
-          ><FaGithub/>
-            Server Code
+            href={project.github_client_site_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-black flex items-center gap-1 font-bold"
+          >
+            <h1>{project.project_category}</h1>
+            <FaGithub size={20} />
           </a>
-        )}
+        </div>
+        <p className="text-gray-600 mb-3 line-clamp-2">{project.project_description}</p>
+        <div className="flex flex-wrap gap-2 mb-3">
+          <ul className="list-disc list-inside text-gray-700 mb-3">
+            {project.project_features.map((feature, index) => (
+              <li key={index} className="text-sm">{feature}</li>
+            ))}
+          </ul>
+
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-between items-center mt-3">
+          <a
+            href={project.live_site_link}
+            target="_blank"
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            Live Site
+          </a>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-green-700 hover:underline px-3 py-1 rounded-lg border border-green-700"
+          >
+            View More
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Modal */}
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+          <Dialog.Panel className="bg-white p-6 rounded-lg max-w-lg">
+            <Dialog.Title className="text-xl font-bold mb-2">{project.project_name}</Dialog.Title>
+            <img
+              src={project.project_image}
+              alt={project.project_name}
+              className="rounded-lg mb-4 w-full object-cover"
+            />
+            <p className="text-gray-700 mb-3">{project.project_description}</p>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {project.project_tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-gradient-to-r from-blue-200 to-green-300 text-green-900 
+      px-3 py-1 rounded-full text-sm font-semibold shadow-md 
+      hover:scale-105 transition-transform duration-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex justify-between mt-3">
+              <a href={project.github_client_site_link} target="_blank" className="text-green-700 hover:underline flex items-center gap-1">
+                <FaGithub />
+                Client Code
+              </a>
+              {project.github_server_site_link !== "N/A" && (
+                <a href={project.github_server_site_link} target="_blank" className="text-green-700 hover:underline flex items-center gap-1">
+                  <FaGithub />
+                  Server Code
+                </a>
+              )}
+            </div>
+            <button onClick={() => setIsOpen(false)} className="mt-4 w-full bg-red-600 text-white px-4 py-2 rounded-lg">
+              Close
+            </button>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
+    </>
+
   );
 };
 
@@ -105,7 +167,7 @@ const ProjectList = () => {
   return (
     <div className="container mx-auto px-5 py-10">
       <div className="mt-36 mb-10">
-      <HeaderSection name={'PROJECTS'}></HeaderSection>
+        <HeaderSection name={'PROJECTS'}></HeaderSection>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
