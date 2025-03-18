@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import HeaderSection from "../../Sheard/HeaderSection/HeaderSection";
 
 const skills = {
@@ -36,24 +35,8 @@ const skills = {
 };
 
 const Skills = () => {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const section = document.getElementById("skills-section");
-            if (section) {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    setIsVisible(true);
-                }
-            }
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
     return (
-        <section id="skills-section" className="md:mt-10  bg-gradient-to-r from-green-50 via-white to-green-50">
+        <section id="skills-section" className="md:mt-10 bg-gradient-to-r from-green-50 via-white to-green-50">
             <div className="max-w-6xl mx-auto px-5">
                 <HeaderSection name={'SKILLS'} />
                 <div className="mt-10">
@@ -62,26 +45,21 @@ const Skills = () => {
                             <h2 className="text-3xl font-semibold text-center text-green-700 mb-6">{category}</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                                 {skills[category].map((skill, index) => (
-                                    <motion.div
+                                    <div
                                         key={index}
                                         className="bg-white shadow-xl rounded-lg p-6 border border-gray-300 hover:shadow-2xl transition-transform transform hover:scale-105"
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                                        transition={{ duration: 0.6, delay: index * 0.1 }}
                                     >
                                         <div className="flex justify-between font-semibold text-lg mb-4">
                                             <span className="text-green-600">{skill.name}</span>
                                             <span className="text-gray-700">{skill.percentage}%</span>
                                         </div>
                                         <div className="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
-                                            <motion.div
+                                            <div
                                                 className="bg-green-500 h-3 rounded-full"
-                                                initial={{ width: 0 }}
-                                                animate={{ width: isVisible ? `${skill.percentage}%` : "0%" }}
-                                                transition={{ duration: 1, ease: "easeInOut" }}
-                                            ></motion.div>
+                                                style={{ width: `${skill.percentage}%` }}
+                                            ></div>
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
                         </div>

@@ -103,13 +103,13 @@ const ProjectCard = ({ project }) => {
           <a
             href={project.live_site_link}
             target="_blank"
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-green-600 hover:underline text-white px-2 py-1 text-sm rounded-lg"
           >
-            Live Site
+            Live Site Link
           </a>
           <button
             onClick={() => setIsOpen(true)}
-            className="text-green-700 hover:underline px-3 py-1 rounded-lg border border-green-700"
+            className="bg-green-600 hover:underline text-white px-2 py-1 text-sm rounded-lg"
           >
             View More
           </button>
