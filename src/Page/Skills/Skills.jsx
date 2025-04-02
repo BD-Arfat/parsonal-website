@@ -49,11 +49,12 @@ const Skills = () => {
             }
         };
         window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Initial check to see if the section is already visible
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
-        <section id="skills-section" className="md:mt-10  bg-gradient-to-r from-green-50 via-white to-green-50">
+        <section id="skills-section" className="md:mt-10 bg-gradient-to-r from-green-50 via-white to-green-50">
             <div className="max-w-6xl mx-auto px-5">
                 <HeaderSection name={'SKILLS'} />
                 <div className="mt-10">
@@ -64,7 +65,7 @@ const Skills = () => {
                                 {skills[category].map((skill, index) => (
                                     <motion.div
                                         key={index}
-                                        className="bg-white shadow-xl rounded-lg p-6 border border-gray-300 hover:shadow-2xl transition-transform transform hover:scale-105"
+                                        className="bg-gradient-to-r from-green-200 via-green-100 to-white shadow-lg rounded-xl p-6 border border-gray-300 hover:shadow-xl transition-transform transform hover:-translate-y-2"
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={isVisible ? { opacity: 1, y: 0 } : {}}
                                         transition={{ duration: 0.6, delay: index * 0.1 }}
