@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
 import { motion } from "framer-motion";
 
@@ -18,17 +18,59 @@ const projectsData = [
     serverLink: "https://github.com/BD-Arfat/medicine-server",
     livesiteLink: "https://github.com/BD-Arfat/medicine-client",
     isFullStack: true,
+    category: 'fullstack'
+  },
+  {
+    title: "LIFTGUARD SOLUTION",
+    description: "This is a fully responsive, industry-level management system built using React, Tailwind CSS.",
+    image: "https://i.ibb.co.com/HDWQf4C1/lift-guard.png",
+    technologies: ["React.js", "Tailwind CSS", "framer-motion"],
+    keyFeatures: [
+      "This is a fully responsive.",
+      "Industry-level management system built.",
+      "",
+      "",
+      "",
+    ],
+    liveLink: "https://liftguardsolution01.netlify.app/",
+    livesiteLink: "https://github.com/BD-Arfat/lift-guard",
+    isFullStack: false,
+    category: 'react-tailwind'
   },
 ];
 
 const Projects = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Extract unique categories from projectsData
+  const categories = ['all', ...new Set(projectsData.map(project => project.category))];
+
+  // Filter projects based on selected category
+  const filteredProjects = selectedCategory === 'all'
+    ? projectsData
+    : projectsData.filter(project => project.category === selectedCategory);
+
   return (
     <section className="mt-32 mb-24">
       <div className="text-center mb-12">
         <HeaderSection name={"PROJECTS"} />
       </div>
+
+      {/* Category Filter Buttons */}
+      <div className="mb-8 text-center">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-4 py-2 rounded-md mr-4 ${selectedCategory === category ? 'bg-green-500 text-white' : 'bg-gray-300 text-black'}`}
+          >
+            {category === 'all' ? 'All Projects' : category.replace('-', ' ').toUpperCase()}
+          </button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-        {projectsData.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
