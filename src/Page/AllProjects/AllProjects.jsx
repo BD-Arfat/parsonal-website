@@ -1,57 +1,89 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { FaGithub, FaServer, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-// Sample Project Data
-const projectsData = [
-  {
-    title: "MedlinePlus 🛒",
-    description: "A medicine e-commerce platform for buying and selling medicines seamlessly.",
-    image: "https://i.ibb.co.com/WWRX97xB/Screenshot-2025-04-01-235028.png",
-    technologies: [
-      "React.js", "Tailwind CSS", "Firebase", "Node.js", "Express.js",
-      "MongoDB", "Stripe", "JWT Auth"
-    ],
-    liveLink: "https://medicine-client.web.app/",
-    serverLink: "https://github.com/BD-Arfat/medicine-server",
-    livesiteLink: "https://github.com/BD-Arfat/medicine-client",
-    category: "fullstack"
-  },
-  {
-    title: "LIFTGUARD SOLUTION",
-    description: "Industry-level management system built using React, Tailwind CSS.",
-    image: "https://i.ibb.co.com/HDWQf4C1/lift-guard.png",
-    technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
-    liveLink: "https://liftguardsolution01.netlify.app/",
-    livesiteLink: "https://github.com/BD-Arfat/lift-guard",
-    serverLink: null,
-    category: "react-tailwind"
-  },
-  {
-    title: "This is my first website and first project.",
-    description: "I made this to see and know how much html and css I have learned. I made this with html and css",
-    image: "https://i.ibb.co.com/x8jSV1Hk/Screenshot-2025-04-23-183806.png",
-    technologies: ['html5', 'css3'],
-    liveLink: "https://bd-arfat.github.io/Assignment-Project-one/",
-    livesiteLink: "https://github.com/BD-Arfat/Assignment-Project-one",
-    serverLink: null,
-    category: "html-css"
-  },
-  {
-    title: "This is my Seconds website and Seconds project.",
-    description: "I made this to see and know how much html and css I have learned. I made this with html and css",
-    image: "https://i.ibb.co.com/KjBbZ6N4/Screenshot-2025-04-23-184500.png",
-    technologies: ['html5', 'css3'],
-    liveLink: "https://bd-arfat.github.io/Assignment-two/",
-    livesiteLink: "https://github.com/BD-Arfat/Assignment-two",
-    serverLink: null,
-    category: "html-css"
-  },
-];
 
-const Projects = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+const projectsData = [
+    {
+      title: "MedlinePlus 🛒",
+      description: "A medicine e-commerce platform for buying and selling medicines seamlessly.",
+      image: "https://i.ibb.co.com/WWRX97xB/Screenshot-2025-04-01-235028.png",
+      technologies: [
+        "React.js", "Tailwind CSS", "Firebase", "Node.js", "Express.js",
+        "MongoDB", "Stripe", "JWT Auth"
+      ],
+      liveLink: "https://medicine-client.web.app/",
+      serverLink: "https://github.com/BD-Arfat/medicine-server",
+      livesiteLink: "https://github.com/BD-Arfat/medicine-client",
+      category: "fullstack"
+    },
+    {
+      title: "LIFTGUARD SOLUTION",
+      description: "Industry-level management system built using React, Tailwind CSS.",
+      image: "https://i.ibb.co.com/HDWQf4C1/lift-guard.png",
+      technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
+      liveLink: "https://liftguardsolution01.netlify.app/",
+      livesiteLink: "https://github.com/BD-Arfat/lift-guard",
+      serverLink: null,
+      category: "react-tailwind"
+    },
+    {
+      title: "This is my first website and first project.",
+      description: "I made this to see and know how much html and css I have learned. I made this with html and css",
+      image: "https://i.ibb.co.com/x8jSV1Hk/Screenshot-2025-04-23-183806.png",
+      technologies: ['html5', 'css3'],
+      liveLink: "https://bd-arfat.github.io/Assignment-Project-one/",
+      livesiteLink: "https://github.com/BD-Arfat/Assignment-Project-one",
+      serverLink: null,
+      category: "html-css"
+    },
+    {
+      title: "This is my Seconds website and Seconds project.",
+      description: "I made this to see and know how much html and css I have learned. I made this with html and css",
+      image: "https://i.ibb.co.com/KjBbZ6N4/Screenshot-2025-04-23-184500.png",
+      technologies: ['html5', 'css3'],
+      liveLink: "https://bd-arfat.github.io/Assignment-two/",
+      livesiteLink: "https://github.com/BD-Arfat/Assignment-two",
+      serverLink: null,
+      category: "html-css"
+    },
+    {
+      title: "This is my Third website and Third project.",
+      description: "I made this to see and know how much html, css and tailwindCss I have learned. I made this with html and css",
+      image: "https://i.ibb.co.com/C5qCbgh7/Screenshot-2025-04-23-191528.png",
+      technologies: ['html5', 'css3', 'tailwind css'],
+      liveLink: "https://bd-arfat.github.io/Assignment-three/",
+      livesiteLink: "https://github.com/BD-Arfat/Assignment-three",
+      serverLink: null,
+      category: "html-css"
+    }, 
+    {
+      title: "Donate Website.",
+      description: "I made it with JavaScript. I designed it with CSS, Tailwind CSS.",
+      image: "https://i.ibb.co.com/DsdfGyV/Screenshot-2025-04-25-195857.png",
+      technologies: ['html5', 'css3', 'tailwind css', 'Javascript'],
+      liveLink: "https://banking-project-333.netlify.app/",
+      livesiteLink: "https://github.com/BD-Arfat/Assignment-Five",
+      serverLink: null,
+      category: "javascript"
+    }, 
+    {
+      title: "Retrea Rabbitt",
+      description: "I made it with JavaScript. I designed it with CSS, Tailwind CSS.",
+      image: "https://i.ibb.co.com/nMkVc64n/Screenshot-2025-04-23-191528.png",
+      technologies: ['html5', 'css3', 'tailwind css', 'Javascript'],
+      liveLink: "https://adopt-your-best-friend.web.app/",
+      livesiteLink: "https://github.com/BD-Arfat/Adopt-Your-Best-Friend",
+      serverLink: null,
+      category: "javascript"
+    }, 
+
+]
+
+
+const AllProjects = () => {
+    const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = ["all", ...new Set(projectsData.map(p => p.category))];
 
@@ -150,11 +182,8 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-      <div className="text-center mt-16">
-        <Link to={'/allProjects'} className="bg-green-600 py-4 px-6 text-xl  rounded-md text-white">See More Projects</Link>
-      </div>
     </div>
   );
 };
 
-export default Projects;
+export default AllProjects;
