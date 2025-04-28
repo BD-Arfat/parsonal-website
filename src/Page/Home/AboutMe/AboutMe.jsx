@@ -1,5 +1,5 @@
 import React from "react";
-import image from '../../../assets/arfat.jpg';
+import image from '../../../assets/arfat-222.jpg';
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
 
 const AboutMe = () => {

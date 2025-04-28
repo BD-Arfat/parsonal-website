@@ -68,16 +68,6 @@ const projectsData = [
       serverLink: null,
       category: "javascript"
     }, 
-    {
-      title: "Retrea Rabbitt",
-      description: "I made it with JavaScript. I designed it with CSS, Tailwind CSS.",
-      image: "https://i.ibb.co.com/nMkVc64n/Screenshot-2025-04-23-191528.png",
-      technologies: ['html5', 'css3', 'tailwind css', 'Javascript'],
-      liveLink: "https://adopt-your-best-friend.web.app/",
-      livesiteLink: "https://github.com/BD-Arfat/Adopt-Your-Best-Friend",
-      serverLink: null,
-      category: "javascript"
-    }, 
 
 ]
 

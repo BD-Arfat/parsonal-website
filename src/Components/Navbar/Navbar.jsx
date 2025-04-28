@@ -43,7 +43,7 @@ const Navbar = () => {
             <li><NavLink to="/abouts" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Abouts</NavLink></li>
             <li><NavLink to={'/skills'} className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Skills</NavLink></li>
             <li><NavLink to={'/services'} className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Services</NavLink></li>
-            <li><NavLink to="/contact" className="md:p-4 py-3 px-0 block md:mb-0 mb-2 hover:text-blue-400 transition-all duration-300">All Projects</NavLink></li>
+            <li><NavLink to="/allProjects" className="md:p-4 py-3 px-0 block md:mb-0 mb-2 hover:text-blue-400 transition-all duration-300">All Projects</NavLink></li>
           </ul>
         </nav>
       </div>
