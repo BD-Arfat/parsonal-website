@@ -24,7 +24,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative w-full py-32 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 bg-gradient-to-r  overflow-hidden">
+    <div className="relative w-full py-32 lg:py-52 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 bg-gradient-to-r  overflow-hidden">
       {/* Background Decorative Circles */}
       <motion.div
         animate={{ x: [-10, 10, -10], y: [-10, 20, -10] }}
@@ -89,14 +89,28 @@ const Banner = () => {
           professional Web Developer. I love to build modern, interactive, and
           high-performance web applications.
         </p>
+        <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
         <motion.button
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsModalOpen(true)}
           className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-green-600 transition-all"
         >
-          Call Me Today
+          📞 Whatsapp Number
         </motion.button>
+        <a
+          href="/path-to-your-cv.pdf"
+          download="Ariful-Islam-CV"
+        >
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-emerald-500 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-emerald-600 transition-all"
+          >
+            📄 Download CV
+          </motion.button>
+        </a>
+      </div>
       </motion.div>
 
       {/* Right Side - Image Section */}
@@ -116,31 +130,41 @@ const Banner = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-            <h2 className="text-2xl font-semibold mb-2">📞 Contact Me</h2>
-            <p className="text-lg font-semibold text-green-600">{phoneNumber}</p>
-            <div className="flex gap-2 mt-4 justify-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white p-8 rounded-xl shadow-2xl w-96 text-center relative"
+          >
+            <h2 className="text-3xl font-bold text-green-600 mb-4">📞 Let's Talk!</h2>
+            <p className="text-lg text-gray-700 mb-6">
+              Want to discuss a project or need help? Feel free to contact me now.
+            </p>
+            <div className="bg-green-100 py-2 rounded-md mb-4">
+              <span className="text-xl font-semibold text-green-800">{phoneNumber}</span>
+            </div>
+            <div className="flex justify-center gap-4">
               <button
                 onClick={copyToClipboard}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold shadow"
               >
-                Copy Number
+                📋 Copy Number
               </button>
               <a
                 href={`tel:${phoneNumber}`}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600"
+                className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg font-semibold shadow"
               >
-                Call Now
+                📞 Call Now
               </a>
             </div>
             <button
               onClick={() => setIsModalOpen(false)}
-              className="mt-4 text-red-500 font-semibold"
+              className="absolute top-2 right-3 text-red-500 font-bold text-xl hover:text-red-700"
             >
-              Close
+              ✖
             </button>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

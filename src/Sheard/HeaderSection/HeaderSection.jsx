@@ -3,7 +3,7 @@ import React from 'react';
 const HeaderSection = ({name}) => {
     return (
         <div>
-            <h1 className="text-center font-bold font-roboto text-6xl text-green-500 mt-20">
+            <h1 className="text-center font-bold font-roboto text-xl sm:text-5xl md:text-3xl lg:text-6xl text-green-500 mt-20">
                 {name}
             </h1>
             {/* Stylish HR Line */}

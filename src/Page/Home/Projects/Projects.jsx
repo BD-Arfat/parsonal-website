@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaGithub, FaServer, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
 
 // Sample Project Data
 const projectsData = [
@@ -62,7 +63,9 @@ const Projects = () => {
 
   return (
     <div className="py-10 px-5 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-6">My Projects</h2>
+       <div className="text-center mb-16">
+        <HeaderSection name={'MY PROJECTS'}></HeaderSection>
+      </div>
 
       {/* Category Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-3 mb-10">

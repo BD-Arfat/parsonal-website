@@ -68,6 +68,16 @@ const projectsData = [
       serverLink: null,
       category: "javascript"
     }, 
+    {
+      title: "adopt-your-best-friend.",
+      description: "I made it with JavaScript. I designed it with CSS, Tailwind CSS.",
+      image: "https://i.ibb.co.com/FbfMy7kM/Screenshot-2025-04-26-225424.png",
+      technologies: ['html5', 'css3', 'tailwind css', 'Javascript'],
+      liveLink: "https://adopt-your-best-friend.web.app/",
+      livesiteLink: "#",
+      serverLink: null,
+      category: "javascript"
+    }, 
 
 ]
 

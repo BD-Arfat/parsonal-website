@@ -1,52 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import './navbar.css'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [active, setActive] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setActive(true);
-      } else {
-        setActive(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { path: '/', name: 'Home' },
+    { path: '/abouts', name: 'Abouts' },
+    { path: '/skills', name: 'Skills' },
+    { path: '/services', name: 'Services' },
+    { path: '/allProjects', name: 'All Projects' }
+  ];
+
   return (
-    <header
-      className={`lg:px-16 px-4 bg-gradient-to-r from-green-500 to-green-700 text-white flex items-center justify-between font-lora py-4 shadow-lg transition-all duration-300 ${active ? 'shadow-xl' : ''}`}
-    >
-      <div className="flex-1 flex justify-between items-center">
-        <Link to={'/'} href="#" className="md:text-4xl text-xl font-roboto font-bold text-white hover:text-gray-300 transition-all">Ariful Islam Arfat</Link>
-      </div>
+    <header className={`fixed w-full z-50 top-0 left-0 transition-all duration-300 ${isScrolled ? 'bg-green-600 shadow-lg' : 'bg-green-500'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <Link to="/" className="text-white text-2xl md:text-3xl font-bold">Ariful Islam Arfat</Link>
+        </div>
 
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden block text-white">
-        <svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <title>menu</title>
-          <path d="M0 3h24v2H0V3zm0 6h24v2H0V9zm0 6h24v2H0v-2z"></path>
-        </svg>
-      </button>
-
-      <div className={`md:flex md:items-center md:w-auto w-full ${isMenuOpen ? 'block' : 'hidden'}`} id="menu">
-        <nav>
-          <ul className="md:flex items-center justify-between text-2xl text-slate-100 pt-4 md:pt-0">
-            <li><NavLink to={'/'} className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Home</NavLink></li>
-            <li><NavLink to="/abouts" className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Abouts</NavLink></li>
-            <li><NavLink to={'/skills'} className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Skills</NavLink></li>
-            <li><NavLink to={'/services'} className="md:p-4 py-3 px-0 block hover:text-blue-400 transition-all duration-300">Services</NavLink></li>
-            <li><NavLink to="/allProjects" className="md:p-4 py-3 px-0 block md:mb-0 mb-2 hover:text-blue-400 transition-all duration-300">All Projects</NavLink></li>
-          </ul>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-6 text-white text-lg">
+          {navLinks.map(link => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) =>
+                isActive ? 'text-blue-300 font-semibold' : 'hover:text-blue-300 transition'
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d={
+                  isMenuOpen
+                    ? 'M6 18L18 6M6 6l12 12' // Close icon
+                    : 'M4 6h16M4 12h16M4 18h16' // Hamburger icon
+                }
+              />
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Items */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-green-600">
+          <nav className="flex flex-col items-start space-y-2 p-4 text-white text-lg">
+            {navLinks.map(link => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive }) =>
+                  isActive ? 'text-blue-300 font-semibold' : 'hover:text-blue-300 transition'
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

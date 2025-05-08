@@ -35,7 +35,7 @@ const Education = () => {
             whileHover={{ scale: 1.1, boxShadow: "0px 15px 40px rgba(0, 128, 0, 0.4)" }}
             className="relative bg-gradient-to-r from-green-400 to-teal-500 py-12 text-white p-8 rounded-3xl shadow-2xl transform hover:-translate-y-3 transition-all duration-300"
           >
-            <h3 className="text-6xl font-roboto font-extrabold mb-6 uppercase tracking-wide">{edu.title}</h3>
+            <h3 className="md:text-6xl text-3xl font-roboto font-extrabold mb-6 uppercase tracking-wide">{edu.title}</h3>
             <p className="text-lg leading-relaxed font-lora mb-6">{edu.description}</p>
             <p className="text-xl font-bold mb-4 font-roboto">Subject: {edu.subject}</p>
             <p className="text-lg font-semibold mb-2 font-roboto">{edu.year}</p>
