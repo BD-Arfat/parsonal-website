@@ -1,6 +1,7 @@
 import React from "react";
 import image from '../../../assets/arfat-222.jpg';
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
+import { Link } from "react-router-dom";
 
 const AboutMe = () => {
     return (
@@ -54,12 +55,12 @@ const AboutMe = () => {
 
                         {/* Contact Section */}
                         <div className="mt-6">
-                            <a
-                                href="mailto:arifulislam5162@gmail.com"
+                            <Link
+                                to={'/abouts'}
                                 className="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition-transform duration-300 hover:scale-110 font-roboto"
                             >
                                 More Information
-                            </a>
+                            </Link>
                             <p className="mt-4 text-gray-500 font-roboto">
                                 Contact: arifulislam5162@gmail.com
                             </p>

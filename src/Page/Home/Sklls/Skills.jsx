@@ -3,19 +3,36 @@ import { motion } from "framer-motion";
 import HeaderSection from "../../../Sheard/HeaderSection/HeaderSection";
 import { Link } from "react-router-dom";
 
+// Icons
+import {
+    FaHtml5,
+    FaCss3Alt,
+    FaGithub,
+    FaFigma,
+    FaJs,
+    FaReact,
+} from "react-icons/fa";
+
+import {
+    SiTailwindcss,
+    SiFirebase,
+    SiJavascript,
+} from "react-icons/si";
+
+// Skills with icons
 const skills = [
-    { name: "HTML", percentage: 90 },
-    { name: "CSS", percentage: 85 },
-    { name: "Tailwind CSS", percentage: 90 },
-    { name: "GitHub", percentage: 95 },
-    { name: "Figma", percentage: 80 },
-    { name: "Pixso", percentage: 80 },
-    { name: "Daisy UI", percentage: 90 },
-    { name: "JavaScript", percentage: 75 },
-    { name: "JavaScript DOM", percentage: 75 },
-    { name: "JavaScript ES6", percentage: 70 },
-    { name: "React js", percentage: 72 },
-    { name: "Firebase", percentage: 50 },
+    { name: "HTML", icon: <FaHtml5 className="text-orange-600 text-5xl" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-600 text-5xl" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-500 text-5xl" /> },
+    { name: "GitHub", icon: <FaGithub className="text-gray-800 text-5xl" /> },
+    { name: "Figma", icon: <FaFigma className="text-pink-500 text-5xl" /> },
+    { name: "Pixso", icon: <FaFigma className="text-purple-500 text-5xl" /> }, // Pixso alternative
+    { name: "Daisy UI", icon: <SiTailwindcss className="text-purple-400 text-5xl" /> }, // DaisyUI alternative
+    { name: "JavaScript", icon: <FaJs className="text-yellow-400 text-5xl" /> },
+    { name: "JavaScript DOM", icon: <SiJavascript className="text-yellow-500 text-5xl" /> },
+    { name: "JavaScript ES6", icon: <SiJavascript className="text-yellow-600 text-5xl" /> },
+    { name: "React js", icon: <FaReact className="text-blue-400 text-5xl" /> },
+    { name: "Firebase", icon: <SiFirebase className="text-orange-400 text-5xl" /> },
 ];
 
 const Skills = () => {
@@ -38,27 +55,21 @@ const Skills = () => {
     return (
         <section id="skills-section" className="md:mt-48">
             <div className="max-w-6xl mx-auto px-5">
-                <HeaderSection name={'SKILLS'}></HeaderSection>
+                <HeaderSection name={'SKILLS'} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
                     {skills.map((skill, index) => (
                         <motion.div
                             key={index}
-                            className="bg-gradient-to-r from-green-200 via-green-100 to-white shadow-lg rounded-xl p-6 border border-gray-300 hover:shadow-xl transition-transform transform hover:-translate-y-2"
+                            className="bg-gradient-to-r from-green-200 via-green-50 to-green-200 shadow-lg rounded-xl p-6 border border-gray-300 hover:shadow-xl transition-transform transform hover:-translate-y-2"
                             initial={{ opacity: 0, y: 20 }}
                             animate={isVisible ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <div className="flex justify-between font-bold text-lg mb-4">
-                                <span className="text-green-700">{skill.name}</span>
-                                <span className="text-gray-700">{skill.percentage}%</span>
-                            </div>
-                            <div className="w-full bg-gray-300 h-3 rounded-full overflow-hidden">
-                                <motion.div
-                                    className="bg-green-500 h-3 rounded-full"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: isVisible ? `${skill.percentage}%` : "0%" }}
-                                    transition={{ duration: 1, ease: "easeInOut" }}
-                                ></motion.div>
+                            <div className="flex flex-col items-center justify-center gap-4">
+                                <div className="">{skill.icon}</div>
+                                <div className="text-center">
+                                    <h3 className="text-xl font-bold text-green-700">{skill.name}</h3>
+                                </div>
                             </div>
                         </motion.div>
                     ))}

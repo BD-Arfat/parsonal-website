@@ -10,6 +10,9 @@ export default {
         roboto: ["Rowdies", 'serif'],
         lora: ["Crete Round", 'serif'],
       },
+      animation: {
+        'spin-slow': 'spin 4s linear infinite',
+      },
     },
   },
   plugins: [],
