@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import image from '../../../assets/arfat-111.jpg';
+import cv from '../../../../src/assets/frontend-cv.pdf'
 
 const titles = ["Ariful Islam Arfat", "Frontend Web Developer", "MERN Stack Web Developer"];
 
@@ -99,7 +100,7 @@ const Banner = () => {
           📞 Whatsapp Number
         </motion.button>
         <a
-          href="/path-to-your-cv.pdf"
+          href={cv}
           download="Ariful-Islam-CV"
         >
           <motion.button
