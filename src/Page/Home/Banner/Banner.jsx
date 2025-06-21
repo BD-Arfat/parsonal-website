@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import image from '../../../assets/arfat-111.jpg';
-import cv from '../../../../src/assets/frontend-cv.pdf'
+import cv from '../../../../src/assets/frontend-cv-pdf.pdf'
 
 const titles = ["Ariful Islam Arfat", "Frontend Web Developer", "MERN Stack Web Developer"];
 
